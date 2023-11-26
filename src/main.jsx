@@ -15,7 +15,7 @@ import { EditTask } from './Components/Card/EditTask.jsx';
 import Cookies from 'js-cookie';
 import { EditUserProfile } from './UserProfile/EditarPerfil.jsx'
 //import { AuthProvider } from './Context/AuthProvider.jsx';
-import { Pontuacao } from './Pages/Pontuacao/pontuacao.jsx';
+import { Pontuacao } from './Pages/Pontuacao/Pontuacao.jsx';
 import { Home } from './Pages/Home/Home.jsx';
 const AuthProvider = ({ children }) => {
   return Cookies.get("token") ? children : <CardLogin />;
