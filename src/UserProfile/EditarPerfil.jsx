@@ -42,14 +42,20 @@ export function EditUserProfile() {
             <Form onSubmit={handleSubmit(onProfileUpdate)}>
                 <label>
                     Nome: <br />
-                    <input type="text" {...register("name")} placeholder="Atualize o nome" />
+                    <input type="text" {...register("name")} placeholder="Atualize nome" />
                     {errors.name && <ErroSpan>*{errors.name.message}</ErroSpan>}
                 </label>
                 <label >
                     Sobrenome:
                     <br />
-                    <input type="text" {...register("username")} placeholder="Atualize o sobrenome" />
+                    <input type="text" {...register("username")} placeholder="Atualize sobrenome" />
                     {errors.username && <ErroSpan>*{errors.username.message}</ErroSpan>}
+                </label>
+                <label >
+                    E-mail:
+                    <br />
+                    <input type="text" {...register("email")} placeholder="Atualize email" />
+                    {errors.email && <ErroSpan>*{errors.email.message}</ErroSpan>}
                 </label>
                 <DivButton>
                     <button>Finalizar</button>

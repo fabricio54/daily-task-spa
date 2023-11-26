@@ -1,8 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-//const baseUrl = "https://servidor-para-site-de-tarefas.onrender.com";
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://servidor-para-site-de-tarefas.onrender.com";
+//const baseUrl = "http://localhost:3000";
 
 export async function createTaskeService(dados) {
     console.log(dados, Cookies.get('token'))
@@ -55,6 +55,7 @@ export async function modificarStatus(id) {
 }
 
 export async function updateProfile(dados) {
+    console.log(dados)
     const config = {
         headers: {
             Authorization: `Bearer ${Cookies.get('token')}`
@@ -76,5 +77,50 @@ export async function countTaskesFinish() {
         return response;
     } catch (error) {
         console.log(error);
+    }
+}
+
+export async function taskeFinish() {
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${Cookies.get("token")}`
+            }
+        }
+        const response = await axios.get(`${baseUrl}/taske/finish`, config)
+        console.log(response.status)
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function taskePendent() {
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${Cookies.get("token")}`
+            }
+        }
+        const response = await axios.get(`${baseUrl}/taske/pendent`, config)
+        console.log(response)
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function searchTitle(data) {
+    try {
+        const name = data
+        const config = {
+            headers: {
+                Authorization: `Bearer ${Cookies.get("token")}`
+            }
+        }
+        const response = axios.get(`${baseUrl}/taske/search?name=${name}`, config)
+        return response
+    } catch (error) {
+        console.log(error)
     }
 }

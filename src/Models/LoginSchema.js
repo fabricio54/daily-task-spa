@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { authentication } from "../services/authServices";
 
 export const loginSchema = z.object({
     email: z.string().nonempty({ message: "Email não pode ser vazio" }).refine((value) => /@/.test(value), { message: "Email deve conter um @" }),

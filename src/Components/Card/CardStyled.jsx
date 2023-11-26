@@ -83,7 +83,6 @@ export const SectionLink = styled.section`
         
             &:hover {
                 font-size: 1.1rem;
-                color: #34bfbf;
                 transition: .4s;
             }
         }   

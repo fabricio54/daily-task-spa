@@ -73,19 +73,19 @@ export function Card() {
 }
 
 export function CardLogin() {
-
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState(null); // Estado para controlar a mensagem de erro
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(loginSchema)
-    })
+    });
 
     async function inSignin(data) {
         try {
             const token = await authentication(data);
 
-            if(token.status === 200) {
-                console.log(token)
+            if (token.status === 200) {
+                console.log(token);
                 Cookies.set('token', token.data.token, { 
                     expires: 1
                 });
@@ -94,14 +94,12 @@ export function CardLogin() {
 
         } catch (error) {
             console.log(error);
-            navigate('/');
+            setErrorMessage("Email ou senha incorretos");
         }
-        
     }
-    
 
     return (
-        <Section >
+        <Section>
             <Form onSubmit={handleSubmit(inSignin)}>
                 <label>
                     Email:
@@ -110,7 +108,7 @@ export function CardLogin() {
                     {errors.email && <ErroSpan>*{errors.email.message}</ErroSpan>}
                 </label>
                 <label>
-                Senha:
+                    Senha:
                     <br />
                     <input type="password" {...register("password")} placeholder="Insira uma senha" />
                     {errors.password && <ErroSpan>*{errors.password.message}</ErroSpan>}
@@ -120,13 +118,16 @@ export function CardLogin() {
                         Login
                     </button>
                 </DivButton>
+                <br/>
+                {errorMessage && <ErroSpan>{errorMessage}</ErroSpan>}
                 <SectionLink>
                     <div>
                         <Link to="/cadastrar">
-                        Ainda não é cadastrado? Clique Aqui</Link>
+                            Ainda não é cadastrado? Clique Aqui
+                        </Link>
                     </div>
                 </SectionLink>
             </Form>
         </Section>
-    )
+    );
 }

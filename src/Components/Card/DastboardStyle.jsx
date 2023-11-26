@@ -55,8 +55,17 @@ export const Cards = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Duas colunas, com pelo menos 250px cada, se possível */
     gap: 35px; /* Espaço entre os cards, você pode ajustar conforme necessário */
     max-width: 100%; /* Para evitar que os cards se expandam demais */
+    padding-top: 3rem;
 
     @media (max-width: 600px) {
         grid-template-columns: 1fr; /* Uma coluna com um card cada em telas menores que 400px */
     }
 `;
+
+/*
+export const InputStyle = styled.div`
+  display: flex;
+  gap: 25px;
+  background-color: white;
+`;
+*/
